@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# Locate Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A [Forma](https://app.autodeskforma.com) embedded view extension that locates your Forma project in the real world — in case you've named your project cryptically.
 
-Currently, two official plugins are available:
+## What it does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Opens as a panel inside Forma and shows:
 
-## React Compiler
+- **Interactive map** centred on the project's geographic coordinates
+- **Address** looked up from those coordinates (via OpenStreetMap)
+- **Coordinates** in both DMS and decimal formats, with a one-click copy button
+- **Open in Google Maps** link
+- **Project metadata** — name, region (EU/US), and timezone
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How to access it
 
-## Expanding the ESLint configuration
+The extension is registered in the Forma Developer Portal and available as an embedded view in Forma.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Open a project in [Forma](https://app.autodeskforma.com)
+2. Click the extensions panel on the right-hand side
+3. Find **Locate Project** and open it
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The extension reads the project's geographic location automatically — no input needed.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Development
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app runs at `http://localhost:5173`. Load it as a local extension in the Forma Developer Portal to test against real project data.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Deploy
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run deploy
 ```
+
+Builds and publishes to GitHub Pages at:
+`https://staahlarkitektur.github.io/forma-locate-project/`
+
+## Tech
+
+- React + TypeScript + Vite
+- Tailwind CSS
+- [forma-embedded-view-sdk](https://www.npmjs.com/package/forma-embedded-view-sdk)
+- OpenStreetMap / Nominatim for reverse geocoding
