@@ -7,15 +7,6 @@ interface Props {
   addressLoading: boolean
 }
 
-function toDMS(value: number, posLabel: string, negLabel: string): string {
-  const abs = Math.abs(value)
-  const deg = Math.floor(abs)
-  const minFull = (abs - deg) * 60
-  const min = Math.floor(minFull)
-  const sec = ((minFull - min) * 60).toFixed(1)
-  const dir = value >= 0 ? posLabel : negLabel
-  return `${deg}° ${min}' ${sec}" ${dir}`
-}
 
 export function CoordinateDisplay({ lat, lng, address, addressLoading }: Props) {
   const [copied, setCopied] = useState(false)
@@ -42,12 +33,8 @@ export function CoordinateDisplay({ lat, lng, address, addressLoading }: Props) 
       </div>
 
       {/* Coordinates */}
-      <div className="flex items-start justify-between gap-2">
-        <div className="font-mono text-sm text-gray-800 space-y-0.5">
-          <div>{toDMS(lat, 'N', 'S')}</div>
-          <div>{toDMS(lng, 'E', 'W')}</div>
-          <div className="text-xs text-gray-400">{decimalStr}</div>
-        </div>
+      <div className="flex items-center justify-between gap-2">
+        <span className="font-mono text-xs text-gray-400">{decimalStr}</span>
         <button
           onClick={handleCopy}
           className="flex-shrink-0 text-xs text-blue-600 hover:text-blue-800 font-medium transition-colors"
