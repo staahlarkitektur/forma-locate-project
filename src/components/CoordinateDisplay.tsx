@@ -24,9 +24,9 @@ export function CoordinateDisplay({ lat, lng, address, addressLoading }: Props) 
   return (
     <div className="space-y-2">
       {/* Address */}
-      <div className="text-sm text-gray-700">
+      <div className="text-sm text-weave-text">
         {addressLoading ? (
-          <span className="text-gray-400 italic">Looking up address…</span>
+          <span className="text-weave-text-secondary italic">Looking up address…</span>
         ) : address ? (
           <span>{address}</span>
         ) : null}
@@ -34,10 +34,10 @@ export function CoordinateDisplay({ lat, lng, address, addressLoading }: Props) 
 
       {/* Coordinates */}
       <div className="flex items-center justify-between gap-2">
-        <span className="font-mono text-xs text-gray-400">{decimalStr}</span>
+        <span className="font-mono text-xs text-weave-text-secondary">{decimalStr}</span>
         <button
           onClick={handleCopy}
-          className="flex-shrink-0 text-xs text-blue-600 hover:text-blue-800 font-medium transition-colors"
+          className="flex-shrink-0 text-xs text-weave-twilight hover:opacity-75 font-medium transition-opacity"
         >
           {copied ? 'Copied!' : 'Copy'}
         </button>
@@ -48,7 +48,7 @@ export function CoordinateDisplay({ lat, lng, address, addressLoading }: Props) 
         href={googleMapsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 font-medium transition-colors"
+        className="inline-flex items-center gap-1 text-xs text-weave-twilight hover:opacity-75 font-medium transition-opacity"
       >
         Open in Google Maps
         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

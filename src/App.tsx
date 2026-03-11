@@ -31,15 +31,15 @@ function App() {
   }, [])
 
   return (
-    <div className="flex flex-col h-screen bg-white text-gray-900">
+    <div className="flex flex-col h-screen bg-white text-weave-text">
       {/* Header */}
-      <header className="px-4 py-2 border-b border-gray-200 flex-shrink-0">
-        <span className="text-sm font-semibold text-gray-700">Locate Project</span>
+      <header className="px-4 py-2 border-b border-weave-border flex-shrink-0">
+        <span className="text-sm font-semibold text-weave-text">Locate Project</span>
       </header>
 
       {/* Loading */}
       {loading && (
-        <div className="flex-1 flex items-center justify-center text-sm text-gray-400">
+        <div className="flex-1 flex items-center justify-center text-sm text-weave-text-secondary">
           Loading project location…
         </div>
       )}
@@ -68,14 +68,14 @@ function App() {
           </div>
 
           {/* Info below map */}
-          <div className="flex-shrink-0 border-t border-gray-100 px-4 py-3 space-y-3">
+          <div className="flex-shrink-0 border-t border-weave-border px-4 py-3 space-y-3">
             <CoordinateDisplay
               lat={data.location.lat}
               lng={data.location.lng}
               address={address}
               addressLoading={addressLoading}
             />
-            <div className="border-t border-gray-100 pt-3">
+            <div className="border-t border-weave-border pt-3">
               <ProjectMetadata project={data.project} />
             </div>
           </div>

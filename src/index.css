@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --color-weave-text: #3c3c3c;
+  --color-weave-text-secondary: #666666;
+  --color-weave-border: #d5d5cb;
+  --color-weave-twilight: #1d91d0;
+  --color-weave-twilight-surface: #e6f4fb;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Artifakt Element", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
